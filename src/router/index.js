@@ -14,7 +14,42 @@ const routes = [
       menu: Menus,
       content: Index,
     },
-    //beforeEnter: common.requireAuth()
+  },
+  {
+    path: '/Page2_1',
+    name: 'Page2_1',
+    components: {
+      menu: Menus,
+      content: { template: `
+        <div style="width: 100%;
+        height: 100%;
+        background-color: black;">test</div>
+      `},
+    },
+  },
+  {
+    path: '/Page2_2',
+    name: 'Page2_2',
+    components: {
+      menu: Menus,
+      content: { template: `
+        <div style="width: 100%;
+        height: 100%;
+        background-color: green;">test</div>
+      `},
+    },
+  },
+  {
+    path: '/Page3',
+    name: 'Page3',
+    components: {
+      menu: Menus,
+      content: { template: `
+        <div style="width: 100%;
+        height: 100%;
+        background-color: gray;">test</div>
+      `},
+    },
   },
 ]
 

@@ -5,15 +5,12 @@
       v-model="drawer"
       app
       dark
+      :color="colors.menu_background_color"
       floating
       persistent
       mobile-break-point="960"
       width="280"
     >
-      <!-- <v-img
-        :src="image"
-        height="100%"
-      > -->
       <div>
         <v-layout
           class="fill-height"
@@ -21,22 +18,20 @@
           column
         >
           <v-list>
-
-            <v-list-item @click="movePage('codeList');">
+            <v-list-item @click="movePage('');">
               <img src="../assets/jogo.png" width="100">
             </v-list-item>
-            <hr style="margin-top: 20px;margin-bottom: 20px;">
-            <v-list-item-group active-class="orange accent-4 white--text">
+            <hr class="mt-2 mb-2">
+            <v-list-item-group :active-class="`${colors.menu_selected_color} white--text`">
               <template v-for="menu in menus">
                 <template v-if="menu.childrens">
                   <v-list-group :prepend-icon="menu.icon" :key="menu.id">
                     <template v-slot:activator>
                       <v-list-item-title>{{menu.title}}</v-list-item-title>
                     </template>
-
                     <template v-for="children in menu.childrens">
-                      <v-list-item @click="movePage(children.target);" :key="children.id" style="margin-left:10px;" active-class="orange accent-4 white--text">
-                        <v-list-item-icon active-class="orange accent-4">
+                      <v-list-item @click="movePage(children.target);" :key="children.id" class="ml-2" active-class="purple white--text">
+                        <v-list-item-icon active-class="purple">
                           <v-icon>{{children.icon}}</v-icon>
                         </v-list-item-icon>
                         <v-list-item-title>
@@ -44,11 +39,10 @@
                         </v-list-item-title>
                       </v-list-item>
                     </template>
-                    
                   </v-list-group>
                 </template>
                 <template v-else>
-                  <v-list-item @click="movePage(menu.target);" :key="menu.id" active-class="orange accent-4 white--text">
+                  <v-list-item @click="movePage(menu.target);" :key="menu.id" active-class="purple white--text">
                     <v-list-item-icon>
                       <v-icon>{{menu.icon}}</v-icon>
                     </v-list-item-icon>
@@ -62,13 +56,11 @@
       <!-- </v-img> -->
       </div>
     </v-navigation-drawer>
-    <v-toolbar :elevation="0" color="#fafafa" fixed>
+    <!-- <v-toolbar :elevation="0" color="#fafafa" fixed>
       <v-btn v-if="responsive" icon color="dark" medium @click.stop="onClickBtn" style="margin-top:10px;">
         <v-icon large>menu</v-icon>
       </v-btn>
-    </v-toolbar>
-
-
+    </v-toolbar> -->
   </div>
 </template>
 
@@ -81,30 +73,21 @@ export default {
   components: {
   },
   data: () => ({
-    //image: 'https://demos.creative-tim.com/vue-material-dashboard/img/sidebar-2.32103624.jpg',
-    //image: 'https://images.pexels.com/photos/998641/pexels-photo-998641.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
     drawer: null,
     color: 'success',
     responsive: false,
   }),
   computed: _.extend(
-    // {
-    //   inputValue: {
-    //     get () {
-    //       return this.$store.state.app.drawer
-    //     },
-    //     set (val) {
-    //       this.setDrawer(val)
-    //     }
-    //   }
-    // },
-    mapState(["menus"]),
+    mapState(["menus", "colors"]),
   ),
   mounted(){
     this.onResponsiveInverted()
     window.addEventListener('resize', this.onResponsiveInverted)
   },
   methods: {
+    movePage(target){
+      this.$router.push({ name: target });
+    },
     onResponsiveInverted () {
       if (window.innerWidth < 1000) {
         this.responsive = true
@@ -120,7 +103,6 @@ export default {
   #app-drawer {
     .v-list__tile {
       border-radius: 4px;
-
       &--buy {
         margin-top: auto;
         margin-bottom: 17px;
