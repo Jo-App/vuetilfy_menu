@@ -12,10 +12,9 @@
           <v-list-item-title class="headline mb-1">메뉴 색상</v-list-item-title>
           <v-list-item-subtitle>
             <v-row
-              justify="space-around"
               align="center"
             >
-              <v-col>
+              <v-col cols="3" sm="3" md="3">
                 <span>메뉴 배경색 : {{colors.menu_background_color}}</span>
                 <v-color-picker
                   v-model="colors.menu_background_color"
@@ -23,26 +22,34 @@
                 >
                 </v-color-picker>
               </v-col>
-              <v-col>
+              <v-col cols="3" sm="3" md="3">
                 <span>메뉴 선택 색 : {{colors.menu_selected_color}}</span>
-                <!-- <v-color-picker
+                <v-autocomplete
                   v-model="colors.menu_selected_color"
-                  flat
-                ></v-color-picker> -->
-<select v-model="selectedFruits">
-  <option disabled value="">Please select one</option>
-  <option>A</option>
-  <option>B</option>
-  <option>C</option>
-</select>
-
-              </v-col>
-              <v-col>
-                <span>메뉴 호버 색 : {{colors.menu_hover_color}}</span>
-                <v-color-picker
-                  v-model="colors.menu_hover_color"
-                  flat
-                ></v-color-picker>
+                  :items="people"
+                  filled
+                  color="blue-grey lighten-2"
+                  label="Color"
+                  item-text="name"
+                  item-value="name"
+                  solo
+                >
+                  <template v-slot:selection="data">
+                    <v-list-item-avatar>
+                    <div :class="data.item.color" class="pa-6 text-center lighten-2 rounded-sm"></div>
+                    </v-list-item-avatar>
+                    {{ data.item.name }}
+                  </template>
+                  <template v-slot:item="data">
+                    <v-list-item-avatar>
+                      <div :class="data.item.color" class="pa-6 text-center lighten-2 rounded-sm"></div>
+                    </v-list-item-avatar>
+                    <v-list-item-content>
+                      <v-list-item-title v-html="data.item.name"></v-list-item-title>
+                      <v-list-item-subtitle v-html="data.item.group"></v-list-item-subtitle>
+                    </v-list-item-content>
+                  </template>
+                </v-autocomplete>
               </v-col>
             </v-row>
           </v-list-item-subtitle>
@@ -70,55 +77,16 @@ export default {
     mapState(["colors"])
   ),
   data: () => ({
- fruits: [
-        'Apples',
-        'Apricots',
-        'Avocado',
-        'Bananas',
-        'Blueberries',
-        'Blackberries',
-        'Boysenberries',
-        'Bread fruit',
-        'Cantaloupes (cantalope)',
-        'Cherries',
-        'Cranberries',
-        'Cucumbers',
-        'Currants',
-        'Dates',
-        'Eggplant',
-        'Figs',
-        'Grapes',
-        'Grapefruit',
-        'Guava',
-        'Honeydew melons',
-        'Huckleberries',
-        'Kiwis',
-        'Kumquat',
-        'Lemons',
-        'Limes',
-        'Mangos',
-        'Mulberries',
-        'Muskmelon',
-        'Nectarines',
-        'Olives',
-        'Oranges',
-        'Papaya',
-        'Peaches',
-        'Pears',
-        'Persimmon',
-        'Pineapple',
-        'Plums',
-        'Pomegranate',
-        'Raspberries',
-        'Rose Apple',
-        'Starfruit',
-        'Strawberries',
-        'Tangerines',
-        'Tomatoes',
-        'Watermelons',
-        'Zucchini',
-      ],
-      selectedFruits: []
+    friends: ['Sandra Adams', 'Britta Holt'],
+    name: 'Midnight Crew',
+    people: [
+      { name: 'red', color: "red" },
+      { name: 'blue', color: "blue" },
+      { name: 'green', color: "green" },
+      { name: 'black', color: "black" },
+      { name: 'orange', color: "orange" },
+    
+    ],
   }),
   created(){
 

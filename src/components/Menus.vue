@@ -22,16 +22,17 @@
               <img src="../assets/jogo.png" width="100">
             </v-list-item>
             <hr class="mt-2 mb-2">
-            <v-list-item-group :active-class="`${colors.menu_selected_color} white--text`">
+            {{colors.menu_selected_color}}
+            <v-list-item-group>
               <template v-for="menu in menus">
                 <template v-if="menu.childrens">
-                  <v-list-group :prepend-icon="menu.icon" :key="menu.id">
+                  <v-list-group :prepend-icon="menu.icon" :key="menu.id" :active-class="`${colors.menu_selected_color} accent-4 white--text`">
                     <template v-slot:activator>
                       <v-list-item-title>{{menu.title}}</v-list-item-title>
                     </template>
                     <template v-for="children in menu.childrens">
-                      <v-list-item @click="movePage(children.target);" :key="children.id" class="ml-2" active-class="purple white--text">
-                        <v-list-item-icon active-class="purple">
+                      <v-list-item @click="movePage(children.target);" :key="children.id" class="ml-2" :active-class="`${colors.menu_selected_color} accent-4 white--text`">
+                        <v-list-item-icon :active-class="`${colors.menu_selected_color} accent-4`">
                           <v-icon>{{children.icon}}</v-icon>
                         </v-list-item-icon>
                         <v-list-item-title>
@@ -42,7 +43,7 @@
                   </v-list-group>
                 </template>
                 <template v-else>
-                  <v-list-item @click="movePage(menu.target);" :key="menu.id" active-class="purple white--text">
+                  <v-list-item @click="movePage(menu.target);" :key="menu.id" :active-class="`${colors.menu_selected_color} accent-4 white--text`">
                     <v-list-item-icon>
                       <v-icon>{{menu.icon}}</v-icon>
                     </v-list-item-icon>
@@ -53,7 +54,6 @@
             </v-list-item-group>
           </v-list>
         </v-layout>
-      <!-- </v-img> -->
       </div>
     </v-navigation-drawer>
     <!-- <v-toolbar :elevation="0" color="#fafafa" fixed>
@@ -76,6 +76,8 @@ export default {
     drawer: null,
     color: 'success',
     responsive: false,
+
+    
   }),
   computed: _.extend(
     mapState(["menus", "colors"]),
