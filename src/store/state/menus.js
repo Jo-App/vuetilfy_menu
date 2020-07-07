@@ -11,6 +11,7 @@ const menuState = {
       icon: "loop",
       title: "페이지2",
       target: "Page2",
+      model: false,
       childrens: [
         {
           id:2-1,

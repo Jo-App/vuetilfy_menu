@@ -19,19 +19,26 @@
         >
           <v-list>
             <v-list-item @click="movePage('');">
-              <img src="../assets/jogo.png" width="100">
+              <v-toolbar-title><v-icon class="mr-2">home</v-icon>JoBlog</v-toolbar-title>
             </v-list-item>
             <hr class="mt-2 mb-2">
-            {{colors.menu_selected_color}}
-            <v-list-item-group>
+            <v-list-item-group active-class="white--text">
               <template v-for="menu in menus">
-                <template v-if="menu.childrens">
-                  <v-list-group :prepend-icon="menu.icon" :key="menu.id" :active-class="`${colors.menu_selected_color} accent-4 white--text`">
+                <template v-if="menu.childrens"> <!-- 자식 메뉴가 있는경우 -->
+                  <v-list-group
+                    :prepend-icon="menu.icon" 
+                    :key="menu.id" 
+                  >
                     <template v-slot:activator>
                       <v-list-item-title>{{menu.title}}</v-list-item-title>
                     </template>
                     <template v-for="children in menu.childrens">
-                      <v-list-item @click="movePage(children.target);" :key="children.id" class="ml-2" :active-class="`${colors.menu_selected_color} accent-4 white--text`">
+                      <v-list-item 
+                        @click="movePage(children.target);" 
+                        :key="children.id" 
+                        class="ml-2" 
+                        :active-class="`${colors.menu_selected_color} accent-4 white--text`"
+                      >
                         <v-list-item-icon :active-class="`${colors.menu_selected_color} accent-4`">
                           <v-icon>{{children.icon}}</v-icon>
                         </v-list-item-icon>
@@ -42,8 +49,12 @@
                     </template>
                   </v-list-group>
                 </template>
-                <template v-else>
-                  <v-list-item @click="movePage(menu.target);" :key="menu.id" :active-class="`${colors.menu_selected_color} accent-4 white--text`">
+                <template v-else> <!-- 단일 메뉴일 경우 -->
+                  <v-list-item 
+                    @click="movePage(menu.target);" 
+                    :key="menu.id" 
+                    :active-class="`${colors.menu_selected_color} accent-4 white--text`"
+                  >
                     <v-list-item-icon>
                       <v-icon>{{menu.icon}}</v-icon>
                     </v-list-item-icon>
