@@ -2,13 +2,13 @@ const menuState = {
   menus: [
     {
       id:1,
-      icon: "assignment_ind",
-      title: "페이지1",
+      icon: "loop",
+      title: "메뉴 설정",
       target: "Index",
     },
     {
       id:2,
-      icon: "loop",
+      icon: "android",
       title: "페이지2",
       target: "Page2",
       model: false,

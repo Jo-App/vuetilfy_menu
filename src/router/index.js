@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 
 import Menus from "../components/Menus.vue";
 import Index from "../view/Index.vue";
+import Page2_1 from "../view/Page2_1.vue";
 
 Vue.use(VueRouter);
 
@@ -20,11 +21,7 @@ const routes = [
     name: 'Page2_1',
     components: {
       menu: Menus,
-      content: { template: `
-        <div style="width: 100%;
-        height: 100%;
-        background-color: black;">test</div>
-      `},
+      content: Page2_1,
     },
   },
   {

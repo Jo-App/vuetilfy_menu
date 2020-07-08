@@ -1,8 +1,6 @@
 <template>
   <v-content>
-    <v-subheader class="headline font-weight-black">
-      <v-icon style="margin-right:10px;" large>loop</v-icon>Setting
-    </v-subheader>
+    <PageTitle></PageTitle>
     <v-card
       class="ma-4"
       outlined
@@ -119,8 +117,8 @@
   </v-content>
 </template>
 
-
 <script>
+import PageTitle from "../components/PageTitle.vue";
 import Childrens from "./Childrens.vue";
 import { mapState } from "vuex";
 import _ from "lodash";
@@ -128,7 +126,8 @@ import _ from "lodash";
 export default {
   name: "Index",
   components: {
-    Childrens
+    Childrens,
+    PageTitle
   },
   computed: _.extend(
     mapState(["colors", "menus"])
