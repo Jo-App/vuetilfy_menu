@@ -26,25 +26,31 @@
         ></v-text-field>
       </v-col>
       <v-col cols="2" sm="2" md="2">
-        <v-btn @click="submit()">submit</v-btn>
+        <v-btn @click="submit()" class="mx-2" fab dark color="indigo">
+          <v-icon dark>mdi-plus</v-icon>
+        </v-btn>
       </v-col>
     </v-row>
-      <v-data-table
-        :headers="headers"
-        :items="childrens"
-        class="elevation-1"
-        item-key="Id"
-        hide-default-footer
-      >
-        <template v-slot:item.actions="{ item }">
-          <v-icon
-            small
-            @click="deleteItem(item.id)"
-          >
-            mdi-delete
-          </v-icon>
-        </template>
-      </v-data-table>
+    <v-row>
+      <v-col cols="9" sm="9" md="9">
+        <v-data-table
+          :headers="headers"
+          :items="childrens"
+          class="elevation-1"
+          item-key="Id"
+          hide-default-footer
+        >
+          <template v-slot:item.actions="{ item }">
+            <v-icon
+              small
+              @click="deleteItem(item.id)"
+            >
+              mdi-delete
+            </v-icon>
+          </template>
+        </v-data-table>
+      </v-col>
+    </v-row>
   </div>
 </template>
 

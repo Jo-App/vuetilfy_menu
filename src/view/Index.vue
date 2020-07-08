@@ -9,7 +9,7 @@
     >
       <v-list-item three-line>
         <v-list-item-content>
-          <v-list-item-title class="headline mb-1">메뉴 색상</v-list-item-title>
+          <v-list-item-title class="headline mb-1 font-weight-black">메뉴 색상</v-list-item-title>
           <v-list-item-subtitle>
             <v-row
               align="center"
@@ -52,6 +52,10 @@
                 </v-autocomplete>
               </v-col>
             </v-row>
+          </v-list-item-subtitle>
+          <hr class="mt-10 mb-10">
+          <v-list-item-title class="headline mb-1 font-weight-black">메뉴 추가/삭제</v-list-item-title>
+          <v-list-item-subtitle>
             <v-row>
               <v-col cols="2" sm="2" md="2">
                 <v-text-field
@@ -78,11 +82,13 @@
                 ></v-text-field>
               </v-col>
               <v-col cols="2" sm="2" md="2">
-                <v-btn @click="submit()">submit</v-btn>
+                <v-btn @click="submit()" class="mx-2" fab dark color="indigo">
+                  <v-icon dark>mdi-plus</v-icon>
+                </v-btn>
               </v-col>
             </v-row>
             <v-row>
-              <v-col cols="6" sm="6" md="6">
+              <v-col cols="9" sm="9" md="9">
                 <v-data-table
                   :headers="headers"
                   :items="menus"
@@ -99,12 +105,9 @@
                     </td>
                   </template>
                   <template v-slot:item.actions="{ item }">
-                    <v-icon
-                      small
-                      @click="deleteItem(item)"
-                    >
-                      mdi-delete
-                    </v-icon>
+                    <v-btn @click="deleteItem(item)" fab dark small color="pink">
+                      <v-icon dark>mdi-delete</v-icon>
+                    </v-btn>
                   </template>
                 </v-data-table>
               </v-col>
@@ -141,11 +144,11 @@ export default {
       { name: 'orange', color: "orange" },
       { name: 'primary', color: "primary" }
     ],
+    expanded: [],
     id: "",
     icon: "",
     title: "",
     target: "",
-    expanded: [],
     headers: [
       {
         text: 'Id',
