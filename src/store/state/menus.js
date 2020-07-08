@@ -4,7 +4,7 @@ const menuState = {
       id:1,
       icon: "assignment_ind",
       title: "페이지1",
-      target: "Index"
+      target: "Index",
     },
     {
       id:2,
@@ -14,13 +14,13 @@ const menuState = {
       model: false,
       childrens: [
         {
-          id:2-1,
+          id:21,
           icon: "assignment_ind",
           title: "페이지2_1",
           target: "Page2_1",
         },
         {
-          id:2-2,
+          id:22,
           icon: "people_alt",
           title: "페이지2_2",
           target: "Page2_2",

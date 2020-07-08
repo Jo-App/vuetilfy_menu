@@ -108,7 +108,7 @@ export default {
         this.responsive = false
       }
     },
-  }
+  },
 }
 </script>
 

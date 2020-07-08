@@ -80,9 +80,7 @@
               <v-col cols="2" sm="2" md="2">
                 <v-btn @click="submit()">submit</v-btn>
               </v-col>
-
             </v-row>
-
             <v-row>
               <v-col cols="6" sm="6" md="6">
                 <v-data-table
@@ -94,8 +92,10 @@
                   hide-default-footer
                 >
                   <template v-slot:expanded-item="{ headers, item }">
-                    <td v-if="item.childrens" :colspan="headers.length">
-                      <Childrens :items="item.childrens"></Childrens>
+                    <td :colspan="headers.length">
+                      <Childrens 
+                        :items="item"
+                      ></Childrens>
                     </td>
                   </template>
                   <template v-slot:item.actions="{ item }">
@@ -112,8 +112,6 @@
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
-
-
     </v-card>
   </v-content>
 </template>
@@ -163,7 +161,6 @@ export default {
     ],
   }),
   created(){
-
   },
   methods:{
     submit() {
@@ -173,10 +170,14 @@ export default {
       obj.title = this.title;
       obj.target = this.target;
       this.menus.push(obj);
+      this.id = "";
+      this.icon = "";
+      this.title = "";
+      this.target = "";
     },
     deleteItem(item) {
       this.$store.commit("deleteItem", { id : item.id })
-    }
+    },
   },
 }
 </script>
