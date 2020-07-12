@@ -11,7 +11,6 @@ const menuState = {
       icon: "android",
       title: "페이지2",
       target: "Page2",
-      model: false,
       childrens: [
         {
           id:21,

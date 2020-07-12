@@ -67,11 +67,6 @@
         </v-layout>
       </div>
     </v-navigation-drawer>
-    <!-- <v-toolbar :elevation="0" color="#fafafa" fixed>
-      <v-btn v-if="responsive" icon color="dark" medium @click.stop="onClickBtn" style="margin-top:10px;">
-        <v-icon large>menu</v-icon>
-      </v-btn>
-    </v-toolbar> -->
   </div>
 </template>
 
@@ -87,8 +82,6 @@ export default {
     drawer: null,
     color: 'success',
     responsive: false,
-
-    
   }),
   computed: _.extend(
     mapState(["menus", "colors"]),
