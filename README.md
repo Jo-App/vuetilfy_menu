@@ -1,29 +1,8 @@
-# josh_vuetify_menu
+### [Vuetify] 메뉴 만들기 (With Vuex)
 
-## Project setup
-```
-npm install
-```
+##### - Node v10.16.0
+##### - Vuetify2
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+![이미지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FsTe5O%2FbtqFAgcjfXc%2FD9id19pp1xmMf46fM1eE2k%2Fimg.gif)
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+<https://dev-josh.tistory.com/12?category=821610>
